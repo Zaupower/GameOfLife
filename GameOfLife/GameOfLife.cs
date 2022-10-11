@@ -11,7 +11,7 @@ public class GameOfLifeHelper
         int lenghtCol = 0;
 
         lenghtRow =currentGenMatrix.GetLength(0);
-        lenghtCol =currentGenMatrix.GetLength(0);
+        lenghtCol =currentGenMatrix.GetLength(1);
         nextGeneration = new int[lenghtRow, lenghtCol];
         
         try
