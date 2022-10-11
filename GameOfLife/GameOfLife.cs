@@ -1,16 +1,10 @@
-namespace GameOfLife;
 
-public class GameOfLife
+public class GameOfLifeHelper
 {
-    private int[,] fisrtGeneration;
     private int[,] nextGeneration;
 
-    public void AddFirstGeneration(int[,] matrix)
-    {
-        this.fisrtGeneration = matrix;
-    }
-    
-    public void GenNextGeneration(int[,] currentGenMatrix)
+
+    public int[,] GenNextGeneration(int[,] currentGenMatrix)
     {
         int row, col;
 
@@ -30,22 +24,38 @@ public class GameOfLife
         }
         
         int lenght = nextGeneration.GetLength(0);
-        
+        int cellSum = 0;
         for (row = 1; row < lenght-1; row++)
         {
             for (col = 1; col < lenght-1; col++)
             {
-                // Checking if row is equal to column
-                if (row > col)
+                cellSum = getCellSum(currentGenMatrix, row,col);
+                //If exactly three neighbors are alive and the current cell is dead revive it on the next gen
+                if (currentGenMatrix[row,col] == 0 && cellSum == 3)
                 {
-                    nextGeneration[row, col] = 0;
-                }else if (row < col)
+                    nextGeneration[row, col] = 1;
+                }else if (currentGenMatrix[row,col] == 1 && cellSum < 2 || cellSum > 3)
                 {
-                    nextGeneration[row, col] = 1; 
+                    nextGeneration[row, col] = 0; 
                 }
             }
         }
-
-        this.nextGeneration = currentGenMatrix;
+        return nextGeneration;
     }
+
+    private int getCellSum(int[,] currentGenMatrix, int row, int col)
+    {
+        int sum =0;
+        sum += currentGenMatrix[row - 1, col - 1];
+        sum += currentGenMatrix[row - 1, col ];
+        sum += currentGenMatrix[row - 1, col + 1];
+        sum += currentGenMatrix[row, col - 1];
+        
+        sum += currentGenMatrix[row, col + 1];
+        sum += currentGenMatrix[row + 1, col - 1];
+        sum += currentGenMatrix[row + 1, col];
+        sum += currentGenMatrix[row + 1, col + 1];
+        return sum;
+    }
+
 }
