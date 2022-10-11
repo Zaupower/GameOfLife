@@ -7,8 +7,12 @@ public class GameOfLifeHelper
     public int[,] GenNextGeneration(int[,] currentGenMatrix)
     {
         int row, col;
+        int lenghtRow = 0;
+        int lenghtCol = 0;
 
-         nextGeneration = new int[currentGenMatrix.GetLength(0), currentGenMatrix.GetLength(1)];
+        lenghtRow =currentGenMatrix.GetLength(0);
+        lenghtCol =currentGenMatrix.GetLength(0);
+        nextGeneration = new int[lenghtRow, lenghtCol];
         
         try
         {
@@ -23,11 +27,10 @@ public class GameOfLifeHelper
             }
         }
         
-        int lenght = nextGeneration.GetLength(0);
         int cellSum = 0;
-        for (row = 1; row < lenght-1; row++)
+        for (row = 1; row < lenghtRow-1; row++)
         {
-            for (col = 1; col < lenght-1; col++)
+            for (col = 1; col < lenghtCol-1; col++)
             {
                 cellSum = getCellSum(currentGenMatrix, row,col);
                 //If exactly three neighbors are alive and the current cell is dead revive it on the next gen
