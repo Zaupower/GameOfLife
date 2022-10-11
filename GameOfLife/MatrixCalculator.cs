@@ -3,15 +3,15 @@ namespace GameOfLife;
 public class MatrixCalculator
 {
     
-    public int[,] GenMatrix(int size)
+    public int[,] GenMatrix(int lengthRow, int lengthCol)
     {
         Random rn = new Random();
-        int[,] matrix = new int[size,size];
+        int[,] matrix = new int[lengthRow,lengthCol];
         int row, col;
          
-        for (row = 0; row < size; row++)
+        for (row = 0; row < lengthRow; row++)
         {
-            for (col = 0; col < size; col++)
+            for (col = 0; col < lengthCol; col++)
             {
                 matrix[row,col] = rn.Next(0, 2);
             }
@@ -22,8 +22,11 @@ public class MatrixCalculator
     public int[,]IdentityMAtrixModifier(int[,] originalMatrix)
     {
         int row, col;
-
-        int[,] modifiedMatrix = new int[originalMatrix.GetLength(0), originalMatrix.GetLength(1)];
+        int lengthRow = 0;
+        int lengthCol = 0;
+        lengthRow = originalMatrix.GetLength(0);
+        lengthCol = originalMatrix.GetLength(1);
+        int[,] modifiedMatrix = new int[lengthRow, lengthCol];
         
         try
         {
@@ -37,11 +40,9 @@ public class MatrixCalculator
                 Console.WriteLine(element);
             }
         }
-        
-        int lenght = modifiedMatrix.GetLength(0);
-        for (row = 0; row < lenght; row++)
+        for (row = 0; row < lengthRow; row++)
         {
-            for (col = 0; col < lenght; col++)
+            for (col = 0; col < lengthCol; col++)
             {
                 // Checking if row is equal to column
                 if (row > col)

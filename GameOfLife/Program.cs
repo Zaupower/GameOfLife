@@ -6,32 +6,34 @@ class Program
     {
         MatrixCalculator mtCalculator = new MatrixCalculator();
         //Use random generatos
-        //int[,] initialMatrix = mtCalculator.GenMatrix(6+1);//add one to not counter borders
+        int[,] initialMatrix = mtCalculator.GenMatrix(6+2, 6+2);//add one to not counter borders
         
         //Beacon example
+        /*
         int[,] initialMatrix =
         {
-            {0,0,0,0,0,0}, 
-            {0,1,1,0,0,0},
-            {0,1,0,0,0,0},
-            {0,0,0,0,1,0}, 
-            {0,0,0,1,1,0},
-            {0,0,0,0,0,0}
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0}, 
+            {0,0,1,1,0,0,0,0},
+            {0,0,1,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0}, 
+            {0,0,0,0,1,1,0,0},
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0}
         };
-        
+        */
         int[,] nextGen = new int[initialMatrix.GetLength(0), initialMatrix.GetLength(1)];
         Console.WriteLine("Initial matrix");
         mtCalculator.PrintMatrix(initialMatrix);
-        Console.WriteLine("First Gen");
+        Console.WriteLine("");
+        Console.WriteLine("Press ENTER to generate next Gen or \"exit\" to leave");
+        Console.WriteLine("");
         GameOfLifeHelper gof = new GameOfLifeHelper();
-        nextGen = gof.GenNextGeneration(initialMatrix);
-        mtCalculator.PrintMatrix(nextGen);
-        Console.WriteLine("Press enter to show next generation, write \"exit\" to terminate ");
-        
+       
         while (Console.ReadLine() != "exit")
         {
-            nextGen = gof.GenNextGeneration(nextGen); 
-            mtCalculator.PrintMatrix(nextGen);
+            initialMatrix = gof.GenNextGeneration(initialMatrix); 
+            mtCalculator.PrintMatrix(initialMatrix);
             Console.WriteLine("");
         }
         
