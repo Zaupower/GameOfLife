@@ -6,10 +6,10 @@ class Program
     {
         MatrixCalculator mtCalculator = new MatrixCalculator();
         //Use random generatos
-        //int[,] initialMatrix = mtCalculator.GenMatrix(8+2, 8+2);//add one to not counter borders
+        int[,] initialMatrix = mtCalculator.GenMatrix(20+2, 9+2);//add one to not counter borders
         
         //Beacon example
-        
+        /*
         int[,] initialMatrix =
         {
             {0,0,0,0,0,0,0,0},
@@ -21,7 +21,7 @@ class Program
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0}
         };
-        
+        */
         int[,] nextGen = new int[initialMatrix.GetLength(0), initialMatrix.GetLength(1)];
         Console.WriteLine("Initial matrix");
         mtCalculator.PrintMatrix(initialMatrix);

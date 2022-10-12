@@ -58,10 +58,16 @@ public class MatrixCalculator
     }
     public void PrintMatrix(int[,] matrix)
     {
-        for (int i = 1; i < matrix.GetLength(0)-1; i++)
+        for (int i = 0; i < matrix.GetLength(0)-1; i++)
         {
-            for (int j = 1; j < matrix.GetLength(1)-1; j++) {
-                if (matrix[i,j] == 1)
+            Console.Write("{0} ", (matrix.GetLength(0)-2) - i );
+            
+            for (int j = 0; j < matrix.GetLength(1)-2; j++) {
+                
+                if (i == matrix.GetLength(0)-2)
+                {
+                    Console.Write("{0} ", j+1); 
+                }else if (matrix[i,j] == 1)
                 {
                     Console.Write("+ ");    
                 }
@@ -71,7 +77,8 @@ public class MatrixCalculator
                 }
                 
             }
-            Console.WriteLine();
+            
+            Console.WriteLine("");
         }
     }
     
