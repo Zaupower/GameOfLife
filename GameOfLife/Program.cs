@@ -6,7 +6,7 @@ class Program
     {
         MatrixCalculator mtCalculator = new MatrixCalculator();
         //Use random generatos
-        int[,] initialMatrix = mtCalculator.GenMatrix(5,2);//add one to not counter borders
+        int[,] initialMatrix = mtCalculator.GenMatrix(5,7);//add one to not counter borders
         
         //Beacon example
         /*
